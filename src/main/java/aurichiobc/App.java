@@ -1,4 +1,5 @@
 package aurichiobc;
+import java.util.List;
 import java.util.Scanner;
 
 import aurichiobc.model.Aluno;
@@ -44,18 +45,21 @@ public class App {
                     }
                     break;
                     
-                case 2:
+                    case 2:
                     System.out.print("\nDigite o nome do aluno: ");
                     String nomeBusca = scanner.nextLine();
-                    Aluno alunoNome = escola.buscarAlunoNome(nomeBusca);
-                    if (alunoNome != null) {
-                        System.out.println("\nAluno encontrado: " + alunoNome);
-                        scanner.nextLine(); 
+                    List<Aluno> alunosEncontrados = escola.buscarAlunosNome(nomeBusca);
+                    if (!alunosEncontrados.isEmpty()) {
+                        System.out.println("\nAlunos encontrados:");
+                        for (Aluno alunoEncontrado : alunosEncontrados) {
+                            System.out.println(alunoEncontrado);  
+                            System.out.println(); 
+                        }
                     } else {
-                        System.out.println("\nAluno não encontrado...");
-                        scanner.nextLine(); 
+                        System.out.println("\nNenhum aluno encontrado com esse nome.");
                     }
                     break;
+
 
                 case 3:
                     System.out.print("\nDigite o CPF do aluno: ");

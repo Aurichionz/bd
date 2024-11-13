@@ -41,15 +41,17 @@ public class Escola {
         return true;
     }
 
-    public Aluno buscarAlunoNome(String nome) {
+    public List<Aluno> buscarAlunosNome(String nome) {
+        List<Aluno> encontrados = new ArrayList<>();
         for (Aluno aluno : alunos) {
-            if (aluno.getNome().equalsIgnoreCase(nome)) {
-                return aluno;
+            if (aluno.getNome().toLowerCase().contains(nome.toLowerCase())) { 
+                encontrados.add(aluno);
+                System.out.println("\n");
             }
         }
-        return null; 
+        return encontrados;
     }
-
+    
     public Aluno buscarAlunoCpf(String cpf) {
         for (Aluno aluno : alunos) {
             if (aluno.getCpf().equals(cpf)) {
